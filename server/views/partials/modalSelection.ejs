@@ -1,0 +1,89 @@
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span data-cy="closeButton" class="close">&times;</span>
+        <div class="menu">
+            <div class="basicPlanContainer">
+                <h2 class="subscriptionPlan-name" id="basicPlan-name">Basic Plan</h2>
+                <button 
+                    class="menu-btn <%= (['basic', 'professional', 'enterprise'].includes(subscriptionPlan) || activeApiKeys.includes('openai')) ? '' : 'disabled-button' %>" 
+                    data-target="chatContainer" 
+                    id="chatContainerButton" 
+                    data-required-plan="basic,professional,enterprise" 
+                    style="display: flex;">
+                    <img src="/img/chatgpt-icon.webp" alt="Chat Icon" class="button-icon">
+                    <span class="button-label">ChatGPT 3.5</span>
+                </button>
+                <button 
+                    class="menu-btn <%= (['basic', 'professional', 'enterprise'].includes(subscriptionPlan) || activeApiKeys.includes('gemini')) ? '' : 'disabled-button' %>" 
+                    data-target="geminiFlashContainer" 
+                    id="geminiFlashContainerButton" 
+                    data-required-plan="basic,professional,enterprise" 
+                    style="display: flex;">
+                    <img src="/img/gemini-icon.webp" alt="Gemini Icon" class="button-icon">
+                    <span class="button-label">Gemini 1.5 Flash</span>
+                </button>
+            </div>
+            <div class="professionalPlanContainer">
+                <h2 class="subscriptionPlan-name" id="professionalPlan-name">Professional Plan</h2>
+                <button 
+                    class="menu-btn <%= (['professional', 'enterprise'].includes(subscriptionPlan) || activeApiKeys.includes('openai')) ? '' : 'disabled-button' %>" 
+                    data-target="chatContainer4" 
+                    id="chatContainerButton4" 
+                    data-required-plan="professional,enterprise" 
+                    style="display: flex;">
+                    <img src="/img/chatgpt-icon.webp" alt="Chat4 Icon" class="button-icon">
+                    <span class="button-label">ChatGPT 4o</span>
+                </button>
+                <button 
+                    class="menu-btn <%= (['professional', 'enterprise'].includes(subscriptionPlan) || activeApiKeys.includes('claude')) ? '' : 'disabled-button' %>" 
+                    data-target="claudeContainer" 
+                    id="claudeContainerButton" 
+                    data-required-plan="professional,enterprise" 
+                    style="display: flex;">
+                    <img src="/img/claude-icon.webp" alt="Claude Icon" class="button-icon">
+                    <span class="button-label">Claude Haiku</span>
+                </button>
+            </div>     
+            <div class="enterprisePlanContainer">   
+                <h2 class="subscriptionPlan-name" id="enterprisePlan-name">Enterprise Plan</h2>
+                <button 
+                    class="menu-btn <%= (subscriptionPlan === 'enterprise' || activeApiKeys.includes('claude')) ? '' : 'disabled-button' %>" 
+                    data-target="claudeSonnetContainer" 
+                    id="claudeSonnetContainerButton" 
+                    data-required-plan="enterprise" 
+                    style="display: flex;">
+                    <img src="/img/claude-icon.webp" alt="Claude Icon" class="button-icon">
+                    <span class="button-label">Claude Sonnet</span>
+                </button> 
+                <button 
+                    class="menu-btn <%= (subscriptionPlan === 'enterprise' || activeApiKeys.includes('gemini')) ? '' : 'disabled-button' %>" 
+                    data-target="geminiContainer" 
+                    id="geminiContainerButton" 
+                    data-required-plan="enterprise" 
+                    style="display: flex;">
+                    <img src="/img/gemini-icon.webp" alt="Gemini Icon" class="button-icon">
+                    <span class="button-label">Gemini 1.5 Pro</span>
+                </button>
+                <button 
+                    class="menu-btn <%= (subscriptionPlan === 'enterprise' || activeApiKeys.includes('perplexity')) ? '' : 'disabled-button' %>" 
+                    data-target="perplexityContainer" 
+                    id="perplexityContainerButton" 
+                    data-required-plan="enterprise" 
+                    style="display: flex;">
+                    <img src="/img/perplexity-icon.webp" alt="Perplexity Icon" class="button-icon">
+                    <span class="button-label">Perplexity</span>
+                </button>
+                <button 
+                    class="menu-btn <%= (subscriptionPlan === 'enterprise' || activeApiKeys.includes('llama')) ? '' : 'disabled-button' %>" 
+                    data-target="llamaContainer" 
+                    id="llamaContainerButton" 
+                    data-required-plan="enterprise" 
+                    style="display: flex;">
+                    <img src="/img/llama-icon.webp" alt="Llama Icon" class="button-icon">
+                    <span class="button-label">Llama</span>
+                </button>
+            </div>          
+        </div>          
+    </div>
+</div>
+

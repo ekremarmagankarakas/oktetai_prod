@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Starter Generator</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/code-starter.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="starterForm" id="starterForm">
+      <h1 id="header">Start Your Coding Project</h1>
+      <form id="projectForm">
+        <div class="form-group">
+          <label for="language">Programming Language:</label>
+          <input type="text" name="language" id="language" placeholder="e.g., JavaScript, Python" required>
+        </div>
+
+        <div class="form-group">
+          <label for="method">Programming Method:</label>
+          <input type="text" name="method" id="method" placeholder="e.g., OOP, Functional, MVC" required>
+        </div>
+
+        <div class="form-group">
+          <label for="idea">Project Idea:</label>
+          <textarea name="idea" id="idea" rows="6" placeholder="Describe your project idea here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn submit-btn">Generate Project</button>
+      </form>
+    </div>
+    <div id="loadingIndicator" class="hidden">
+      <p>Generating your project, please wait...</p>
+    </div>
+
+    <div id="generatedProject" class="generated-project hidden">
+      <div class="layout">
+        <!-- Sidebar for File Hierarchy -->
+        <div class="sidebar">
+          <button id="downloadButton" class="btn download-btn">Download Files</button>        
+          <div id="tabs-container" class="tabs-container"></div>
+        </div>
+
+        <!-- Main Content Area for Code -->
+        <div class="tab-content">
+          <div id="editorHeader" class="editor-header">
+            <select id="modeSelect" class="mode-select">
+              <option value="file-specific">File-specific</option>
+              <option value="full-project">Full-project</option>
+            </select>
+            <div class="prompt-section">
+              <form id="promptForm" class="chat-form">
+                <textarea id="aiPrompt" placeholder="Enter your prompt here..." required rows="1"></textarea>
+                <button type="submit" id="sendPrompt" class="btn">
+                  <span class="material-icons">send</span>
+                </button>
+              </form>
+            </div>  
+          </div>
+          <div id="editorCode" class="code-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Ace Editor -->
+  <script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+  <script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="/js/code-starter.js"></script>
+</body>
+
+</html>

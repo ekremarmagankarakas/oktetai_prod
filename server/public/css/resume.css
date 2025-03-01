@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --bg-color: #030303;
+  --second-bg-color: #030303;
+  --text-color: #ededed;
+  --border-color: #2d2c30;
+  --accent-color: #c17cea;
+  --primary-color: #5e60ce;
+  --container-bg: #fff;
+  --hover-color: #252527;
+  --heading-font-family: 'Poppins', sans-serif;
+  --body-font-family: 'Lato', sans-serif;
+  --main-font-size: 14px;
+  --padding-standard: 14px; /* Standard padding */
+  --margin-standard: 14px; /* Standard margin */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #8e8e8e;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #878787;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #8e8e8e;
+}
+
+body {
+  font-family: var(--body-font-family);
+  background-color: var(--bg-color); /* Dark background from the color scheme */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  height: 100svh;
+  color: var(--text-color);
+  font-size: var(--main-font-size);
+  padding: var(--padding-standard);
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 700px;
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Tab container styling */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Individual tab styling */
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: var(--second-bg-color);
+  color: var(--text-color);
+  margin-right: 5px;
+  border-radius: 5px 5px 0 0;
+  font-family: var(--heading-font-family);
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid var(--border-color);
+  border-bottom: none; /* Seamless tab-to-content transition */
+}
+
+/* Active tab styling */
+.tab.active {
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--bg-color); /* Match content background */
+}
+
+/* Tab hover effect */
+.tab:hover {
+  background-color: var(--hover-color);
+  color: var(--text-color);
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.container.expanded {
+  position: fixed; /* Keep it fixed within the viewport */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1400px;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--heading-font-family);
+  color: var(--text-color);
+  font-size: 24px;
+  margin-bottom: var(--margin-standard);
+}
+
+p {
+  color: var(--text-color);
+  margin-bottom: var(--margin-standard);
+  font-size: 14px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container.expanded .header {
+  display: none;
+}
+
+.form textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  resize: vertical;
+  border-radius: 5px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #4b4fc2;
+}
+
+#improveResumeButton, #generateCoverLetterButton {
+  width: 100%;
+  padding: var(--padding-standard);
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: var(--margin-standard);
+  font-weight: 600;
+}
+
+#improveResumeButton:hover, #generateCoverLetterButton:hover {
+  color: var(--text-color);
+}
+
+#quillContainerCover, #quillContainerResume {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+}
+
+#quillToolbarCover, #quillToolbarResume {
+  padding: 10px;
+  background-color: var(--container-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+#quillEditorCover, #quillEditorResume {
+  flex: 1;
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px;
+  overflow-y: auto; /* Make it scrollable if content overflows */
+}
+
+#quillEditorCover h1, p {
+  color: black;
+}
+
+#quillEditorResume h1, p {
+  color: black;
+}
+
+/* Header container styling */
+.header-container {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+/* Search input textarea styling */
+#searchInputCover, #searchInputResume {
+  flex: 1; /* Allow input to take remaining space */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  resize: none; /* Prevent resizing */
+  height: 40px;
+}
+
+#sendPromptButton {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#sendPromptButton:hover {
+  background-color: #4b4fc2;
+}
+
+/* Download buttons */
+.download-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.download-buttons button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.download-buttons button:hover {
+  background-color: #4b4fc2;
+}
+
+.container.expanded .header-container {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.loadingIndicator {
+  text-align: center;
+}
+
+.loadingIndicator p {
+  color: var(--accent-color);
+  font-size: var(--main-font-size);
+}

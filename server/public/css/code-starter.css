@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+    --bg-color: #030303;
+    --second-bg-color: #141414;
+    --text-color: #ededed;
+    --border-color: #2d2c30;
+    --accent-color: #c17cea;
+    --primary-color: #5e60ce;
+    --container-bg: #fff;
+    --hover-color: #252527;
+    --heading-font-family: 'Poppins', sans-serif;
+    --body-font-family: 'Lato', sans-serif;
+    --main-font-size: 14px;
+    --padding-standard: 14px; /* Standard padding */
+    --margin-standard: 14px; /* Standard margin */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+body {
+    font-family: var(--body-font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--main-font-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+.container {
+    background: var(--bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-family: var(--heading-font-family);
+    color: var(--text-color);
+    font-size: 24px;
+    margin-bottom: var(--margin-standard);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: var(--padding-standard);
+    margin-bottom: var(--margin-standard);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: var(--padding-standard);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.mode-select {
+  max-width: 150px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: var(--active-color);
+    color: var(--accent-color);
+    cursor: pointer;
+    border: 1px solid var(--accent-color);
+    font-weight: 600;
+    margin-top: var(--margin-standard);
+}
+
+.btn:hover {
+    color: var(--text-color);
+}
+
+.submit-btn {
+  padding: var(--padding-standard);
+}
+
+.download-btn {
+  margin-top: 0;
+  margin-bottom: calc(2 * var(--margin-standard));
+}
+
+.prompt-section {
+  background-color: transparent;
+  border-radius: 4px;
+  width: 400px;
+  background-color: var(--active-color);
+  color: var(--second-text-color);
+  text-align: center;
+  border: 1px solid var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prompt-section .chat-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.prompt-section ::-webkit-scrollbar {
+  display: none;
+}
+
+.prompt-section .chat-form span.material-icons {
+  color: gray;
+}
+
+.prompt-section .chat-form button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#aiPrompt {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: auto;
+  flex-grow: 1;
+  outline: none;
+  background-color: transparent;
+  color: var(--text-color);
+  max-height: 240px;
+  padding: 5px;
+  font-size: var(--main-font-size);
+}
+
+#aiPrompt::placeholder {
+  overflow: hidden;
+  text-wrap: nowrap;
+}
+
+#sendPrompt {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.material-icons {
+  color: gray;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.starterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--padding-standard);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+}
+
+#projectForm {
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: var(--margin-standard);
+}
+
+.generated-project {
+    color: var(--text-color);
+}
+
+.layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: var(--second-bg-color);
+}
+
+.sidebar {
+  width: 400px;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: var(--second-bg-color);
+  overflow-y: auto;
+  padding: var(--padding-standard);
+  border-right: 1px solid var(--border-color);
+}
+
+.tabs-container {
+  width: 100%;
+  background-color: var(--second-bg-color); /* VSCode sidebar color */
+  overflow-y: auto;
+}
+
+.tab {
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-color);
+  background-color: var(--second-bg-color);
+  transition: background-color 0.3s ease;
+  text-align: left;
+  font-size: var(--main-font-size)
+}
+
+.tab:hover {
+  background-color: var(--hover-color);
+}
+
+.tab.active {
+  background-color: var(--active-color);
+  color: var(--text-color);
+}
+
+.tab-content {
+  width: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  background-color: var(--second-bg-color);
+  color: var(--text-color);
+  text-align: left;
+}
+
+.folder {
+  font-weight: bold;
+  cursor: pointer;
+  color: gray;
+}
+
+.children {
+  padding-left: 10px;
+}
+
+/* Sticky header for the code editor */
+.editor-header {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  background-color: var(--second-bg-color);
+  color: var(--text-color);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+  padding: 5px;
+}
+
+/* Ace Editor Container Styles */
+.code-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100% - 40px);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: var(--main-font-size);
+}
+
+.ace_editor {
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: var(--main-font-size) !important;
+  line-height: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#loadingIndicator {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: var(--main-font-size);
+}

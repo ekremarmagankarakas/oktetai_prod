@@ -1,0 +1,49 @@
+# Ignore node_modules (installed dependencies)
+node_modules
+
+# Ignore log files
+logs
+*.log
+
+# Ignore test files and folders
+tests/
+cypress/
+*.spec.js
+*.test.js
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+
+# Ignore build-related files (if any)
+build/
+dist/
+
+# Ignore environment files (handled separately or via Docker secrets)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore uploads (optional if uploads are dynamically generated or temporary)
+uploads/
+
+# Ignore Docker-related files (not needed inside the image)
+docker-compose.yml
+Dockerfile
+
+# Ignore Git and version control files
+.git
+.gitignore
+
+# Ignore editor and IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+

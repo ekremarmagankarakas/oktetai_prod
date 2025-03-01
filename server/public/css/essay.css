@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.containerEssay {
+  width: 100%;
+  height: calc(100% - 40px);
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--heading-font-family);
+  color: var(--text-color);
+  font-size: 24px;
+  margin-bottom: var(--margin-standard);
+}
+
+p {
+  color: var(--text-color);
+  margin-bottom: var(--margin-standard);
+  font-size: 14px;
+}
+
+#improveResumeButton, #generateCoverLetterButton {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#improveResumeButton:hover, #generateCoverLetterButton:hover {
+  background-color: #4b4fc2;
+}
+
+#improveResumeButton, #generateCoverLetterButton {
+  width: 100%;
+  padding: var(--padding-standard);
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: var(--margin-standard);
+  font-weight: 600;
+}
+
+#improveResumeButton:hover, #generateCoverLetterButton:hover {
+  color: var(--text-color);
+}
+
+#quillContainerCover, #quillContainerResume {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 210px);
+}
+
+#quillToolbarCover, #quillToolbarResume {
+  padding: 10px;
+	background-color: var(--second-bg-color);
+	border: 1px solid #333333;
+}
+#quillToolbarResume .ql-stroke {
+    fill: none;
+    stroke: #fff;
+}
+#quillToolbarResume .ql-fill {
+    fill: #fff;
+    stroke: none;
+}
+#quillToolbarResume .ql-picker {
+    color: #fff;
+}
+#quillToolbarResume .ql-picker-options {
+		background-color: #fff;
+		color: #000;
+}
+
+#quillEditorCover, #quillEditorResume {
+  flex: 1;
+  background-color: white;
+  color: black;
+  padding: 10px;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+  border: 2px solid #333333;
+	border-top: none;
+	border-bottom: none;
+  overflow-y: auto; 
+	background-color: var(--bg-color);
+}
+
+#quillEditorCover h1, p {
+  color: var(--text-color);
+}
+
+#quillEditorResume h1, p {
+  color: var(--text-color);
+}
+
+/* Header container styling */
+.header-container {
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+	background-color: var(--second-bg-color);
+	border-radius: 10px;
+	border: 1px solid #333333;
+  gap: 10px;
+}
+
+/* Search input textarea styling */
+#searchInputCover, #searchInputResume {
+  flex: 1; /* Allow input to take remaining space */
+  padding: 9px;
+	background: transparent;
+  resize: none; /* Prevent resizing */
+  height: 40px;
+	color: white;
+	font-size: 14px;
+}
+
+#sendPromptButtonResume {
+  background: transparent;
+  cursor: pointer;
+}
+#sendPromptButtonResume.material-icons {
+  padding: 5px;
+  margin: 0;
+  color: gray;
+}
+
+#loadingIndicator {
+  text-align: center;
+}
+
+#loadingIndicator p {
+  color: var(--accent-color);
+  font-size: var(--main-font-size);
+}
+
+#suggestionOverlay {
+  position: absolute;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#suggestionOverlay:hover {
+  background-color: #eaeaea;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#loadingIndicator2 {
+  text-align: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 1);
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+#contextMenu {
+  display: none; 
+  position: fixed; 
+  background: white; 
+  border: 1px solid #ccc; 
+  z-index: 1000; 
+  padding: 5px; 
+  border-radius: 4px; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#paraphraseButtonEssay {
+  color: black; 
+  border: none; 
+  background: none; 
+  padding: 5px; 
+  cursor: pointer;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

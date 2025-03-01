@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+    --bg-color: #030303;
+    --second-bg-color: #030303;
+    --text-color: #ededed;
+    --border-color: #2d2c30;
+    --accent-color: #c17cea;
+    --hover-color: #252527;
+    --heading-font-family: 'Poppins', sans-serif;
+    --body-font-family: 'Lato', sans-serif;
+    --main-font-size: 14px;
+    --padding-standard: 14px; 
+    --margin-standard: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--main-font-size);
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: var(--padding-standard);
+    background-color: var(--second-bg-color);
+}
+
+.back_link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: var(--margin-standard);
+    text-align: left;
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font-family);
+    margin: var(--margin-standard);
+}
+
+h1 {
+    color: var(--accent-color);
+    font-size: 32px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--text-color);
+    font-size: 26px;
+}
+
+h3 {
+    color: var(--text-color);
+    font-size: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 5px;
+}
+
+p {
+    font-size: 16px;
+    margin: var(--margin-standard);
+}
+
+li {
+    margin: var(--margin-standard);
+    font-size: 16px;
+}

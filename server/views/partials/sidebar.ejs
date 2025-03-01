@@ -1,0 +1,47 @@
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header" id="top-sidebar-header">
+        <div class="dropdown">
+            <button class="dropdownButton" data-cy="accountButton">
+                <span class="material-icons">person</span>
+            </button>
+            <div class="dropdownContent">
+								<button id="apiKeysModal">
+										<span class="material-icons">key</span>ApiKeys
+								</button>
+                <button id="openModal1">
+                    <span class="material-icons">card_membership</span>Membership
+                </button>
+                <button id="colorModeToggle">
+                    <span class="material-icons">brightness_6</span>Toggle Mode
+                </button>
+                <a href="/logout" id="logoutButton" data-cy="logoutButton">
+                    <span class="material-icons">logout</span>Logout
+                </a>
+            </div>
+        </div> 
+        <button id="toggleSidebarButton1">
+            <span class="material-icons">history</span>
+        </button>
+    </div>
+    <div class="sidebar-other">
+      <a class="sidebarOtherButton" href='/resume'><span class="material-icons">assignment</span>Resume Helper</a>
+      <a class="sidebarOtherButton" href='/code-starter'><span class="material-icons">code</span>Code Starter</a>
+    </div>
+    <div class="sidebar-header" id="buttons-sidebar-header">
+        <button id="toggleAIButton" data-target="aiSection">
+            <span class="material-icons">chat</span>AI
+        </button>
+        <button id="toggleNotesButton" data-target="notesSection">
+            <span class="material-icons">notes</span>Notes
+        </button>
+        <button id="toggleParaphrasingButton" data-target="paraphrasingSection">
+            <span class="material-icons">transform</span>Paraphraser
+        </button>
+        <button id="addButton" class="addButton">
+            <span class="material-icons">add</span>New Chat
+        </button>       
+    </div>
+    <ul id="conversationList" class="conversation-list">
+        <!-- Conversations will be loaded here -->
+    </ul>
+</div>   

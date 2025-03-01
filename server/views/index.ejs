@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="16x16" href="img/combinedai-icon.webp">
+    <link rel="icon" sizes="32x32" href="img/combinedai-icon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/combinedai-icon.webp">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.snow.css" rel="stylesheet">
+ 		<link rel="stylesheet" href="/css/essay.css">
+
+    <script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script nonce="<%= nonce %>" src="https://js.stripe.com/v3/"></script>
+    <script nonce="<%= nonce %>">
+        (function() {
+            const savedMode = localStorage.getItem('colorMode');
+            if (savedMode === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
+    <script nonce="<%= nonce %>">
+				var activeApiKeys = '<%= activeApiKeys %>';
+        var subscriptionPlan = '<%= subscriptionPlan %>';
+        var isCustomer = '<%= isCustomer %>';
+    </script>
+    <title>OktetAI</title>
+</head>
+<body>  
+    <div id="overlay"></div>
+    <%- include('partials/sidebar') %>
+    <%- include('partials/subscriptions', { subscriptionPlan: subscriptionPlan, activeApiKeys: activeApiKeys }) %>
+
+    <div class="container">   
+        <div class="outputnotes">
+            <%- include('partials/outputContainer') %>
+            <%- include('partials/notes') %>
+            <%- include('partials/paraphrasing') %>
+        </div>
+
+        <div class="seachfooterSection">
+            <%- include('partials/search') %>
+            <%- include('partials/footer') %>
+        </div>
+        <%- include('partials/modalSelection') %>
+			<%- include('partials/apiKeys', { activeApiKeys: activeApiKeys }) %>
+    </div>
+    <script type="module" src="js/script.js"></script>
+		<script>
+  		window.MathJax = {
+    		tex: {
+      		// Delimiters: e.g., $$ for display math, $ for inline math, \[...\] etc.
+      		inlineMath: [['$', '$'], ['\\(', '\\)']],
+      		displayMath: [['$$','$$'], ['\\[','\\]']]
+    		}
+  		};
+		</script>
+		<script nonce="<%= nonce %>" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		<script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.min.js"></script>
+  	<script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.7/purify.min.js"></script>
+		<script type="module" src="/js/essay.js"></script>
+    <script type="module" src="aiChats/chatCombined.js"></script>
+    <script type="module" src="aiChats/notes.js"></script>
+    <script type="module" src="aiChats/paraphrase.js"></script>
+</body>
+</html>

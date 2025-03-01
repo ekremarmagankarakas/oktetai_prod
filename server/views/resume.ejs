@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume & Cover Letter Tools</title>
+
+  <!-- Quill CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/resume.css">
+  
+</head>
+
+<body>
+  <div class="container" id="container">
+    <header class="header">
+      <h1 class="heading">Resume & Cover Letter Tools</h1>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-target="#coverLetterTab">Cover Letter Generator</div>
+      <div class="tab" data-target="#resumeImprovementsTab">Resume Improvements</div>
+    </div>
+
+    <!-- Cover Letter Generator Section -->
+    <section id="coverLetterTab" class="content-section active">
+      <form id="resumeJobFormCover" class="form">
+        <textarea id="resumeTextCover" placeholder="Paste your resume text here" required></textarea>
+        <textarea id="jobDescription" placeholder="Enter job description" required></textarea>
+      </form>
+      <div id="loadingIndicatorCover" class="loadingIndicator hidden">
+        <p>Generating your cover letter, please wait...</p>
+      </div>
+      <div class="button-container-cover">
+        <button id="generateCoverLetterButton">Generate Cover Letter</button>
+      </div>
+
+      <div class="header-container">
+        <textarea id="searchInputCover" placeholder="Enter a prompt to update the cover letter..."></textarea>
+        <button id="sendPromptButtonCover">Send</button>
+        <div class="download-buttons">
+          <button id="downloadDocxButtonCover">Download as DOCX</button>
+          <button id="downloadPdfButtonCover">Download as PDF</button>
+        </div>
+      </div>
+      <div id="quillContainerCover" style="display: none;">
+        <div id="quillToolbarCover">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option selected></option>
+            </select>
+            <select class="ql-font"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-align"></select>
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-link"></button>
+            <button class="ql-image"></button>
+            <button class="ql-video"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="quillEditorCover"></div>
+      </div>
+    </section>
+
+    <!-- Resume Improvements Section -->
+    <section id="resumeImprovementsTab" class="content-section">
+      <form id="resumeJobFormResume" class="form">
+        <textarea id="resumeTextResume" placeholder="Paste your resume text here" required></textarea>
+      </form>
+      <div id="loadingIndicatorResume" class="loadingIndicator hidden">
+        <p>Generating your resume, please wait...</p>
+      </div>
+      <div class="button-container-resume">
+        <button id="improveResumeButton">Improve Resume</button>
+      </div>
+
+      <div class="header-container">
+        <textarea id="searchInputResume" placeholder="Enter a prompt to update the resume..."></textarea>
+        <button id="sendPromptButtonResume">Send</button>
+        <div class="download-buttons">
+          <button id="downloadDocxButtonResume">Download as DOCX</button>
+          <button id="downloadPdfButtonResume">Download as PDF</button>
+        </div>
+      </div>
+      <div id="quillContainerResume" style="display: none;">
+        <div id="quillToolbarResume">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option selected></option>
+            </select>
+            <select class="ql-font"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-align"></select>
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-link"></button>
+            <button class="ql-image"></button>
+            <button class="ql-video"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="quillEditorResume"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quill JS -->
+  <script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.2/quill.min.js"></script>
+  <script nonce="<%= nonce %>" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.7/purify.min.js"></script>
+  <script src="/js/resume.js"></script>
+</body>
+
+</html>

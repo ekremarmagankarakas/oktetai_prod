@@ -1,0 +1,22 @@
+<div class="file-names-container" id="fileNamesContainer"></div>
+<div class="searchSection">
+    <div class="searchContainer">
+        <button id="toggleSidebarButton">
+            <span class="material-icons">history</span>
+        </button>
+        <div class="separator"></div>
+        <div class="upload-container">
+            <label for="fileInput" class="upload-label">
+              <span class="material-icons">upload</span>
+            </label>
+            <input type="file" id="fileInput" accept=".pdf,.txt,image/png,image/jpeg" placeholder="fileInput">
+          </div>
+        <form id="chat-form" class="chat-form">
+            <!-- <span class="material-icons">search</span> -->
+            <textarea id="mytext" placeholder="Search..." required rows="1" data-cy="inputChat"></textarea>
+            <button type="submit" class="submitButton" data-cy="sendChat">
+                <span class="material-icons">send</span>
+            </button>
+        </form>
+    </div>
+</div>

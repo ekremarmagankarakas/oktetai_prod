@@ -1,0 +1,13 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: node_server
+    env_file:
+      - server/.env
+    ports:
+      - "3000:3000"  
+    volumes:
+      - ./server:/app
+    restart: always

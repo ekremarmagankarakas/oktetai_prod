@@ -1,0 +1,52 @@
+<% const apiKeyFields = [
+  { label: 'OpenAI API Key', key: 'openai' },
+  { label: 'Gemini API Key', key: 'gemini' },
+  { label: 'Claude API Key', key: 'claude' },
+  { label: 'Perplexity API Key', key: 'perplexity' },
+]; %>
+
+<div class="apiKeysModalOverlay" id="apiKeysModalOverlay">
+  <div class="apiKeysModalContainer">
+    <button class="apiKeysCloseModal" id="apiKeysCloseModal">&times;</button>
+    <div class="apiKeysModalHeader">Manage Your API Keys</div>
+    <form id="apiKeysForm">
+      <% apiKeyFields.forEach(field => { %>
+      <div class="apiKeysInputGroup">
+        <label for="apiKeys<%= field.key %>"><%= field.label %></label>
+        <!-- Buttons -->
+        <% if (activeApiKeys.includes(field.key)) { %>
+        <button 
+          type="button" 
+          class="apiKeyUpdateButton" 
+          data-key="<%= field.key %>">
+          Update
+        </button>
+        <button 
+          type="button" 
+          class="apiKeyDeleteButton" 
+          data-key="<%= field.key %>">
+          Delete
+        </button>
+        <% } else { %>
+        <button 
+          type="button" 
+          class="apiKeyAddButton" 
+          data-key="<%= field.key %>">
+          Add
+        </button>
+        <% } %>
+        <!-- Hidden Input -->
+        <input 
+          type="text" 
+          id="apiKeys<%= field.key %>" 
+          name="<%= field.key %>" 
+          placeholder="Enter API Key"
+          class="apiKeysInputField hidden"
+        >
+      </div>
+      <% }); %>
+      <button type="submit" class="apiKeysModalSubmit">Save Changes</button>
+    </form>
+  </div>
+</div>
+

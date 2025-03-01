@@ -1,0 +1,77 @@
+<div id="modal1" class="modal1">
+    <div class="modal-content1">
+        <span class="close-button1">&times;</span>
+        <section class="price-comparison">
+            <!-- Basic Plan -->
+            <div class="price-column <%= subscriptionPlan === 'basic' ? 'current-plan' : '' %>">
+                <div class="currentplan <%= subscriptionPlan === 'basic' ? 'visible' : 'hidden' %>">Current Plan</div>
+                <div class="price-header">
+                    <div class="price">Free</div>
+                    <div class="plan-name">Basic</div>
+                </div>
+                <div class="divider"></div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">ChatGPT 3.5</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Gemini 1.5 Flash</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">ChatGPT 4o</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Gemini 1.5 Pro</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Claude Haiku</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Claude Sonnet</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Perplexity</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">LLama</div>
+            </div>
+            
+            <!-- Professional Plan -->
+            <div class="price-column popular <%= subscriptionPlan === 'professional' ? 'current-plan' : '' %>">
+                <div class="currentplan <%= subscriptionPlan === 'professional' ? 'visible' : 'hidden' %>">Current Plan</div>
+                <div class="most-popular">Most Popular</div>
+                <div class="price-header">
+                    <div class="price"><div class="dollar-sign">$</div>19.99<div class="per-month">/mo</div></div>
+                    <div class="plan-name">Professional</div>
+                </div>
+                <div class="divider"></div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">ChatGPT 4.0</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">ChatGPT 3.5</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Gemini 1.5 Flash</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Claude Haiku</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Claude Sonnet</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Gemini 1.5 Pro</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Perlexity</div>
+                <div class="feature inactive"><img src="img/x-square.svg" alt="x-square">Llama</div>
+                <% if (!isCustomer) { %>
+                    <button class="cta" data-plan="professional">Subscribe</button>
+                <% } else { %>
+                    <button class="cta"><%= subscriptionPlan === 'professional' ? 'Manage Subscription' : 'Change Subscription' %></button>
+                <% } %>                
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="price-column <%= subscriptionPlan === 'enterprise' ? 'current-plan' : '' %>">
+                <div class="currentplan <%= subscriptionPlan === 'enterprise' ? 'visible' : 'hidden' %>">Current Plan</div>
+                <div class="price-header">
+                    <div class="price"><div class="dollar-sign">$</div>39.99<div class="per-month">/mo</div></div>
+                    <div class="plan-name">Enterprise</div>
+                </div>
+                <div class="divider"></div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">ChatGPT 4o</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">ChatGPT 3.5</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Gemini 1.5 Pro</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Gemini 1.5 Flash</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Claude Sonnet</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Claude Haiku</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">Perplexity</div>
+                <div class="feature"><img src="img/check-circle.svg" alt="check-circle">LLama</div>
+                <% if (!isCustomer) { %>
+                    <button class="cta" data-plan="enterprise">Subscribe</button>
+                <% } else { %>
+                    <button class="cta"><%= subscriptionPlan === 'enterprise' ? 'Manage Subscription' : 'Change Subscription' %></button>
+                <% } %>
+            </div>
+        </section>
+        <div id="card-element">
+            <!-- Stripe Card Element will be inserted here -->
+        </div>
+        <div class="card-button-container">
+            <button id="card-button">Subscribe</button>
+        </div>
+    </div>
+</div>

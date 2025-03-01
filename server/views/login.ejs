@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <link rel="icon" sizes="16x16" href="img/combinedai-icon.webp">
+    <link rel="icon" sizes="32x32" href="img/combinedai-icon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/combinedai-icon.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <title>Login</title>
+</head>
+<body>
+<div class="container">
+    <a href="/" class="back_link">← Back</a>
+    <div class="form-container">
+        <form action="/login" method="POST">
+            <h1>Welcome back</h1>
+            <p>Enter your email to sign in to your account</p>
+            <div>
+                <input data-cy="username" type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div style="position: relative;">
+                <input data-cy="password" type="password" id="password" name="password" placeholder="Password" required>
+                <span class="toggle-password">👁</span>
+            </div>
+            <a href="/forgot-password" class="forgot_password_link">Forgot Password?</a>
+            <button data-cy="loginButton" type="submit" class="sign-in-button">Sign In</button>
+            <% if (message) { %>
+                <p data-cy="errormessage" class="errormessage"><%= message %></p>
+            <% } %>
+            <p class="or-continue">OR CONTINUE WITH</p>
+            <div class="social-buttons">
+                <a href="/auth/google" class="google-button"><i class="fab fa-google"></i> Google</a>
+            </div>
+            <div class="signup_link">
+                Don't have an account? <a href="/register">Sign Up</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/loginscript.js"></script>
+</body>
+</html>

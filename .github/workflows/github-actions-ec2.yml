@@ -1,0 +1,83 @@
+name: Push-to-EC2
+
+# Trigger deployment only on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to EC2 on main branch push
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository files
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      # Step 2: Install dependencies (Modify based on your project's language/framework)
+      - name: Install dependencies
+        run: |
+          cd server
+          npm install
+
+      # Step 3: Run Tests
+      - name: Run Tests
+        run: |
+          cd server
+          npm test
+          
+      # Step 4: Get the public IP of the GitHub Actions runner
+      - name: Get GitHub Actions IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+
+      # Step 5: Add GitHub Actions IP to the security group
+      - name: Add GitHub Actions IP to Security Group
+        run: |
+          aws ec2 authorize-security-group-ingress --group-name ${{ secrets.AWS_SG_NAME }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+
+      # Step 6: Remove the existing directory on the server
+      - name: Clean up the remote directory
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            rm -rf /home/ubuntu/oktetai
+
+      # Step 7: Deploy files to the server
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: /home/ubuntu/oktetai
+
+      # Step 8: Execute remote SSH commands
+      - name: Executing remote SSH commands using SSH key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo systemctl restart myapp.service
+            sudo systemctl restart caddy
+
+      # Step 9: Remove GitHub Actions IP from the security group
+      - name: Remove GitHub Actions IP from Security Group
+        run: |
+          aws ec2 revoke-security-group-ingress --group-name ${{ secrets.AWS_SG_NAME }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        if: always()

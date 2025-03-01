@@ -1,0 +1,83 @@
+<div id="notesSection" class="notes-section">
+  <div id="notes-header">
+    <h3>Notes</h3>
+		<button id="downloadDocxButtonResume">
+			<span class="material-icons">download<span>
+		</button>
+		<button id="downloadPdfButtonResume">
+			<span class="material-icons">picture_as_pdf<span>
+		</button>
+    <button id="saveNotesButton"> 
+      <span class="material-icons" id="saveIcon">save</span>
+    </button>
+    <button id="aiDetectButton"> 
+      <span class="material-icons">radar</span>
+    </button>
+    <button class="maxSizeBtn" data-target="notesSection">
+      <span class="material-icons">fullscreen</span>
+    </button>
+  </div>
+  <div id="contextMenu">
+    <button id="paraphraseButtonEssay">Paraphrase</button>
+  </div>
+
+  <div class="containerEssay" id="containerEssay">
+    <div id="loadingIndicator2" class="hidden">
+      <div class="spinner"></div>
+      <span>Loading...</span>
+    </div>
+    
+    <!-- Resume Improvements Section -->
+    <section id="resumeImprovementsTab" class="content-section">
+      <div class="header-container">
+        <textarea id="searchInputResume" placeholder="Enter a prompt to update the essay..."></textarea>
+        <button id="sendPromptButtonResume">
+					<span class="material-icons">send</span>
+				</button>
+      </div>
+      <div id="quillContainerResume" style="display: none;">
+        <div id="quillToolbarResume">
+          <span class="ql-formats">
+            <select class="ql-header">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option selected></option>
+            </select>
+            <select class="ql-font"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
+          </span>
+          <span class="ql-formats">
+            <select class="ql-align"></select>
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-link"></button>
+            <button class="ql-image"></button>
+            <button class="ql-video"></button>
+          </span>
+          <span class="ql-formats">
+            <button class="ql-clean"></button>
+          </span>
+        </div>
+        <div id="quillEditorResume"></div>
+      </div>
+    </section>
+  </div>
+
+</div>

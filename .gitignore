@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+*.env
+.env.*
+
+# Logs
+logs/
+*.log
+error.log
+npm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for uploaded/temporary files
+uploads/*
+!uploads/.gitkeep
+
+# Testing
+coverage/
+.nyc_output/
+runTests.js
+
+# Development tools
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+ngrok.exe
+stuff/
+
+# Build output
+dist/
+build/
+tmp/
+
+# Generated documentation
+docs/
+
+# Claude-specific files
+CLAUDE.md
