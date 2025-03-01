@@ -1,5 +1,5 @@
 const { runAIChat } = require('../middleware/aiClient');
-const validateInput = require('../middleware/validationMiddleware');
+const { validateInput } = require('../middleware/validationMiddleware');
 const fs = require("fs");
 const path = require("path");
 const archiver = require("archiver");

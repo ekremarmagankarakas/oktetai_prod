@@ -1,5 +1,5 @@
 const { runAIChat } = require("../middleware/aiClient");
-const validateInput = require("../middleware/validationMiddleware");
+const { validateInput } = require("../middleware/validationMiddleware");
 
 // Update Essay
 exports.updateEssay = [

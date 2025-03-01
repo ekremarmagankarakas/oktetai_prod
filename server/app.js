@@ -104,17 +104,38 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
+// Session clearing code has been run once and can be removed
+// If you experience session issues again, uncomment this code to clear sessions:
+/*
+(async () => {
+  try {
+    const sessionCollection = mongoose.connection.collection('sessions');
+    await sessionCollection.deleteMany({});
+    console.log('Cleared existing sessions for fresh start');
+  } catch (err) {
+    console.error('Failed to clear sessions:', err);
+  }
+})();
+*/
+
+// Standard session middleware with enhanced security
 app.use(
   session({
     store: MongoStore.create({
       mongoUrl: dbURI,
+      stringify: false, // Disable stringifying to avoid JSON parse issues
+      autoRemove: 'interval',
+      autoRemoveInterval: 60 // Minutes
     }),
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'fallback_secret_for_development',
     resave: false,
     saveUninitialized: false,
+    rolling: true, // Refresh session with each request
     cookie: {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
+      httpOnly: true, // Prevent client-side JavaScript from accessing cookie
+      secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+      sameSite: 'lax', // Protect against CSRF attacks
+      maxAge: 8 * 60 * 60 * 1000 // 8 hours
     },
   }),
 );

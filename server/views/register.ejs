@@ -25,7 +25,14 @@
             </div>
             <div style="position: relative;">
                 <input type="password" id="password" name="password" placeholder="Password" required>
-                <span class="toggle-password">👁</span>
+                <span class="toggle-password password-toggle-1">👁</span>
+            </div>
+            <div style="position: relative;">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password password-toggle-2">👁</span>
+            </div>
+            <div class="password-requirements">
+                <small>Password must be at least 8 characters and include uppercase, lowercase, number, and special character</small>
             </div>
             <button type="submit" class="sign-in-button">Sign Up</button>
             <% if (message) { %>

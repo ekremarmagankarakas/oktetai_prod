@@ -6,20 +6,53 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new LocalStrategy(async (username, password, done) => {
     try {
+        // Find user by username
         const user = await User.findOne({ username: username });
+        
+        // Security best practice: Use same message for all authentication failures
+        const genericErrorMessage = 'Invalid username or password.';
+        
+        // Check if user exists
         if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
+            // Delay response to prevent timing attacks
+            await new Promise(resolve => setTimeout(resolve, 500));
+            return done(null, false, { message: genericErrorMessage });
         }
+        
+        // Check if account is disabled
         if (user.disabled) {
-          return done(null, false, { message: 'This account has been disabled.' });
+            return done(null, false, { message: 'This account has been disabled. Please contact support.' });
         }
+        
+        // Check if account is locked due to too many failed attempts
+        if (user.isLocked && user.isLocked()) {
+            return done(null, false, { 
+                message: 'Account is temporarily locked due to too many failed login attempts. Please try again later.' 
+            });
+        }
+        
+        // Validate password
         const isMatch = await bcrypt.compare(password, user.password);
+        
         if (isMatch) {
+            // Reset login attempts on successful login
+            user.loginAttempts = 0;
+            user.lockUntil = undefined;
+            user.lastLogin = new Date();
+            
+            // Store IP address and user agent for audit
+            user.lastIpAddress = this?.req?.ip || 'unknown';
+            user.userAgent = this?.req?.headers['user-agent'] || 'unknown';
+            
+            await user.save();
             return done(null, user);
         } else {
-            return done(null, false, { message: 'Incorrect password.' });
+            // Increment login attempts on failed login
+            await user.incrementLoginAttempts();
+            return done(null, false, { message: genericErrorMessage });
         }
     } catch (err) {
+        console.error('Authentication error:', err);
         return done(err);
     }
 }));

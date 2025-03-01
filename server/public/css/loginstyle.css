@@ -165,3 +165,13 @@ input[type="password"] {
 .signup_link a:hover {
     color: var(--text-color);
 }
+
+.password-requirements {
+    text-align: left;
+    margin: 5px 0 15px;
+    color: #666;
+}
+
+.password-requirements small {
+    font-size: 0.8em;
+}
